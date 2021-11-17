@@ -11,22 +11,62 @@ from faker.providers import DynamicProvider
 fake = Faker()
 
 
+age_provider = DynamicProvider(
+    provider_name="age",
+    elements=[x for x in range(1,100)],
+)
+
+fake.add_provider(age_provider)
+
+
+
+
+gender_provider = DynamicProvider(
+    provider_name="gender",
+    elements=['male', 'female'],
+)
+
+fake.add_provider(gender_provider)
+
+
+
+product_code_provider = DynamicProvider(
+    provider_name="product",
+    elements=['DCFS', 'MMAI', 'FHP-ACA', 'FHP-NONACA', 'SNC', 'MLTSS'],
+)
+
+fake.add_provider(product_code_provider)
+
+
+
+
+
+#https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/ICD10CM/2022/
+icd10_diagnosis_code_provider = DynamicProvider(
+    provider_name="diagnosis",
+    elements=[],
+)
+
+fake.add_provider(icd10_diagnosis_code_provider)
+
+
+
+
+
+
+
+
+
 fake.name()
 
 
-
-
-
-medical_professions_provider = DynamicProvider(
-    provider_name="medical_profession",
-    elements=["dr.", "doctor", "nurse", "surgeon", "clerk"],
-)
-
-fake = Faker()
-
-# then add new provider to faker instance
-fake.add_provider(medical_professions_provider)
-
-# now you can use:
 fake.medical_profession()
-# 'dr.'
+
+
+fake.product()
+
+
+fake.age()
+
+
+fake.gender()
